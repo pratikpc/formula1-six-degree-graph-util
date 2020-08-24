@@ -210,6 +210,7 @@ export default class Graph extends GraphT {
    }
 
    public static GeneratePayload(items: DriversT[]) {
+      if (items.length === 0) return {};
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const payload: any = { nodes: [], edges: [] };
       for (let i = 0; i < items.length - 1; i += 1) {
