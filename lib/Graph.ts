@@ -215,17 +215,17 @@ export default class Graph extends GraphT {
       const payload: any = { nodes: [], links: [] };
       for (let i = 0; i < items.length - 1; i += 1) {
          payload.nodes.push({
-            id: `${this.GetDriverName(items[i])} (${items[i]})`,
+            id: `${this.GetDriverName(items[i])} (${i})`,
             label: items[i]
          });
          payload.links.push({
-            source: `${this.GetDriverName(items[i])} (${items[i]})`,
-            target: `${this.GetDriverName(items[i + 1])} (${items[i + 1]})`
+            source: `${this.GetDriverName(items[i])} (${i})`,
+            target: `${this.GetDriverName(items[i + 1])} (${i + 1})`
          });
       }
       payload.nodes.push({
          id: `${this.GetDriverName(items[items.length - 1])} (${
-            items[items.length - 1]
+            items.length - 1
          })`,
          label: items[items.length - 1]
       });
