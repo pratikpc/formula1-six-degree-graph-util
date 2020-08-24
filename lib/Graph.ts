@@ -212,13 +212,13 @@ export default class Graph extends GraphT {
    public static GeneratePayload(items: DriversT[]) {
       if (items.length === 0) return {};
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const payload: any = { nodes: [], edges: [] };
+      const payload: any = { nodes: [], links: [] };
       for (let i = 0; i < items.length - 1; i += 1) {
          payload.nodes.push({
             id: `${this.GetDriverName(items[i])} (${items[i]})`,
             label: items[i]
          });
-         payload.edges.push({
+         payload.links.push({
             source: `${this.GetDriverName(items[i])} (${items[i]})`,
             target: `${this.GetDriverName(items[i + 1])} (${items[i + 1]})`
          });
