@@ -5,7 +5,11 @@ import {
    Drivers,
    TeamAndDriver,
    TeamIdAndNameLink,
-   TeamNamesAndDrivers
+   TeamNamesAndDrivers,
+   Path,
+   Distance,
+   PathT,
+   DistanceT
 } from 'formula1-extract-driver-pairs';
 import type {
    DriversT,
@@ -18,6 +22,8 @@ import lodash from 'lodash';
 export default class Graph extends GraphT {
    constructor() {
       super(TeamMates);
+      this.path = Path as PathT;
+      this.distance = Distance as DistanceT;
    }
 
    public static GetDriverIDsForSeason(season: number): DriverLinkNameT[] {

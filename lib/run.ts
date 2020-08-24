@@ -1,18 +1,9 @@
 
-import {
-   Path,
-   Distance,
-   PathT,
-   DistanceT
-} from 'formula1-extract-driver-pairs';
 import Graph from './Graph';
 
 async function Run() {
    console.log(Graph.GetDriverName('5'));
    const graph = new Graph();
-
-   graph.path = Path as PathT;
-   graph.distance = Distance as DistanceT;
 
    graph.CalculateDistancesBetweenAllElements({ cache: true });
 
