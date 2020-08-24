@@ -214,16 +214,19 @@ export default class Graph extends GraphT {
       const payload: any = { nodes: [], edges: [] };
       for (let i = 0; i < items.length - 1; i += 1) {
          payload.nodes.push({
-            id: items[i],
-            label: this.GetDriverName(items[i]),
-            title: this.GetDriverName(items[i])
+            id: `${this.GetDriverName(items[i])} (${items[i]})`,
+            label: items[i]
          });
-         payload.edges.push({ from: items[i], to: items[i + 1] });
+         payload.edges.push({
+            source: `${this.GetDriverName(items[i])} (${items[i]})`,
+            target: `${this.GetDriverName(items[i + 1])} (${items[i + 1]})`
+         });
       }
       payload.nodes.push({
-         id: items[items.length - 1],
-         label: this.GetDriverName(items[items.length - 1]),
-         title: this.GetDriverName(items[items.length - 1])
+         id: `${this.GetDriverName(items[items.length - 1])} (${
+            items[items.length - 1]
+         })`,
+         label: items[items.length - 1]
       });
       return payload;
    }
