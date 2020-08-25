@@ -52,18 +52,20 @@ export default class Graph extends GraphT {
             ) as DriversT[],
             bigNames
          )
-         .map(key => [key, Number(this.pathLength[key as DriversT].count)]);
+         .map(key => [
+            key,
+            Graph.GetDriverName(key as DriversT),
+            Number(this.pathLength[key as DriversT].count)
+         ]);
       const mostClosest = items
          .sort((a, b) => Number(a[1]) - Number(b[1]))
-         .slice(0, 5)
-         .map(a => a[0] as DriversT);
+         .slice(0, 5);
       const mostFarthest = items
          .sort((a, b) => Number(b[1]) - Number(a[1]))
-         .slice(0, 5)
-         .map(a => a[0] as DriversT);
+         .slice(0, 5);
       return {
-         mostClosest: Graph.GeneratePayload(mostClosest),
-         mostFarthest: Graph.GeneratePayload(mostFarthest)
+         mostClosest: mostClosest,
+         mostFarthest: mostFarthest
       };
    }
 
@@ -210,7 +212,6 @@ export default class Graph extends GraphT {
    }
 
    public static GeneratePayload(items: DriversT[]) {
-      console.log('44', items.length);
       if (items.length === 0) return {};
       // eslint-disable-next-line no-bitwise
       const mid = (items.length / 2) >> 0;
@@ -230,12 +231,10 @@ export default class Graph extends GraphT {
       let treeR = tree;
       let first = true;
       for (let i = mid + 1; i < items.length; i += 1) {
-         console.log(treeR.children.length, i, items[i]);
          treeR.children.push({
             name: `${this.GetDriverName(items[i])}`,
             children: []
          });
-         console.log(treeR.children.length);
          if (first) {
             [, treeR] = treeR.children;
             first = false;

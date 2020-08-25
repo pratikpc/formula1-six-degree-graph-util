@@ -1,4 +1,3 @@
-
 import Graph from './Graph';
 
 async function Run() {
@@ -7,21 +6,21 @@ async function Run() {
 
    graph.CalculateDistancesBetweenAllElements({ cache: true });
 
-   // console.log(graph.GetSixDegreesOfFreedomInMainComponent());
-   // console.log(
-   //    'Closest between 1950 and 2020',
-   //    graph.GetClosestDriverPairingBetweenSeasons(1950, 2020)
-   // );
-   // console.log(graph.GetClosestTeamPairing('mclaren', 'lotus'));
-   // console.log(
-   //    graph.GetClosestTeamAndDriverPairing('mclaren', 'kimi-raikkonen')
-   // );
+   console.log(graph.GetSixDegreesOfFreedomInMainComponent());
+   console.log(
+      'Closest between 1950 and 2020',
+      graph.GetClosestDriverPairingBetweenSeasons(1950, 2020)
+   );
+   console.log(graph.GetClosestTeamPairing('mclaren', 'lotus'));
+   console.log(
+      graph.GetClosestTeamAndDriverPairing('mclaren', 'kimi-raikkonen')
+   );
    console.log('Farthest');
-   console.log(JSON.stringify(graph.GetFarthestDriverPairingBetweenSeasons(1950, 2020)));
-   // console.log(graph.GetFarthestTeamPairing('mclaren', 'lotus'));
-   // console.log(
-   //    graph.GetClosestTeamAndDriverPairing('mclaren', 'kimi-raikkonen')
-   // );
+   console.log(graph.GetFarthestDriverPairingBetweenSeasons(1950, 2020));
+   console.log(graph.GetFarthestTeamPairing('mclaren', 'lotus'));
+   console.log(
+      graph.GetClosestTeamAndDriverPairing('mclaren', 'kimi-raikkonen')
+   );
 }
 
 Run()
