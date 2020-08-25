@@ -219,11 +219,28 @@ export default class Graph extends GraphT {
          }
       ];
       let [treeIt] = tree;
-      for (let i = 0; i < items.length; i += 1) {
+      for (let i = 0; i < items.length / 2; i += 1) {
          treeIt.children.push({
             name: `${this.GetDriverName(items[i])}`,
             children: []
          });
+         [treeIt] = treeIt.children;
+      }
+      [treeIt] = tree;
+      treeIt.children.push({
+         name: `${this.GetDriverName(items[items.length / 2])}`,
+         children: []
+      });
+      console.log(treeIt.children.length);
+      [, treeIt] = treeIt.children;
+      console.log(treeIt);
+      for (let i = items.length / 2 + 1; i < items.length; i += 1) {
+         console.log(treeIt.children.length);
+         treeIt.children.push({
+            name: `${this.GetDriverName(items[i])}`,
+            children: []
+         });
+         console.log(treeIt.children.length);
          [treeIt] = treeIt.children;
       }
       return tree;
