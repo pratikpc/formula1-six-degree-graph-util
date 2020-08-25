@@ -58,11 +58,11 @@ export default class Graph extends GraphT {
             Number(this.pathLength[key as DriversT].count)
          ]);
       const mostClosest = items
-         .sort((a, b) => Number(a[1]) - Number(b[1]))
-         .slice(0, 5);
+         .sort((a, b) => Number(a[2]) - Number(b[2]))
+         .slice(0, 20);
       const mostFarthest = items
-         .sort((a, b) => Number(b[1]) - Number(a[1]))
-         .slice(0, 5);
+         .sort((a, b) => Number(b[2]) - Number(a[2]))
+         .slice(0, 20);
       return {
          mostClosest: mostClosest,
          mostFarthest: mostFarthest
