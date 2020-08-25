@@ -212,23 +212,20 @@ export default class Graph extends GraphT {
    public static GeneratePayload(items: DriversT[]) {
       if (items.length === 0) return {};
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const payload: any = { nodes: [], links: [] };
-      for (let i = 0; i < items.length - 1; i += 1) {
-         payload.nodes.push({
-            id: `${this.GetDriverName(items[i])} (${i})`,
-            label: items[i]
+      const tree: any = [
+         {
+            name: `${this.GetDriverName(items[0])}`,
+            children: []
+         }
+      ];
+      let [treeIt] = tree;
+      for (let i = 0; i < items.length; i += 1) {
+         treeIt.children.push({
+            name: `${this.GetDriverName(items[i])}`,
+            children: []
          });
-         payload.links.push({
-            source: `${this.GetDriverName(items[i])} (${i})`,
-            target: `${this.GetDriverName(items[i + 1])} (${i + 1})`
-         });
+         [treeIt] = treeIt.children;
       }
-      payload.nodes.push({
-         id: `${this.GetDriverName(items[items.length - 1])} (${
-            items.length - 1
-         })`,
-         label: items[items.length - 1]
-      });
-      return payload;
+      return tree;
    }
 }
