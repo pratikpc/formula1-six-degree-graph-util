@@ -210,39 +210,37 @@ export default class Graph extends GraphT {
    }
 
    public static GeneratePayload(items: DriversT[]) {
+      console.log('44', items.length);
       if (items.length === 0) return {};
+      // eslint-disable-next-line no-bitwise
+      const mid = (items.length / 2) >> 0;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const tree: any = [
-         {
-            name: `${this.GetDriverName(items[0])}`,
-            children: []
-         }
-      ];
-      let [treeIt] = tree;
-      for (let i = 0; i < items.length / 2; i += 1) {
-         treeIt.children.push({
-            name: `${this.GetDriverName(items[i])}`,
-            children: []
-         });
-         [treeIt] = treeIt.children;
-      }
-      [treeIt] = tree;
-      treeIt.children.push({
-         name: `${this.GetDriverName(items[items.length / 2])}`,
+      const tree: any = {
+         name: `${this.GetDriverName(items[mid])}`,
          children: []
-      });
-      console.log(treeIt.children.length);
-      [, treeIt] = treeIt.children;
-      console.log(treeIt);
-      for (let i = items.length / 2 + 1; i < items.length; i += 1) {
-         console.log(treeIt.children.length);
-         treeIt.children.push({
+      };
+      let treeL = tree;
+      for (let i = mid - 1; i >= 0; i -= 1) {
+         treeL.children.push({
             name: `${this.GetDriverName(items[i])}`,
             children: []
          });
-         console.log(treeIt.children.length);
-         [treeIt] = treeIt.children;
+         [treeL] = treeL.children;
       }
-      return tree;
+      let treeR = tree;
+      let first = true;
+      for (let i = mid + 1; i < items.length; i += 1) {
+         console.log(treeR.children.length, i, items[i]);
+         treeR.children.push({
+            name: `${this.GetDriverName(items[i])}`,
+            children: []
+         });
+         console.log(treeR.children.length);
+         if (first) {
+            [, treeR] = treeR.children;
+            first = false;
+         } else [treeR] = treeR.children;
+      }
+      return [tree];
    }
 }
