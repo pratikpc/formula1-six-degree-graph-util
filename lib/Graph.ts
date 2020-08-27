@@ -10,13 +10,13 @@ import {
    Distance,
    PathT,
    DistanceT
-} from 'formula1-extract-driver-pairs';
+} from 'formula-one-six-degrees-metadata';
 import type {
    DriversT,
    DriverLinkNameT,
    TeamAndDriverT,
    TeamNameT
-} from 'formula1-extract-driver-pairs';
+} from 'formula-one-six-degrees-metadata';
 import lodash from 'lodash';
 
 export default class Graph extends GraphT {
