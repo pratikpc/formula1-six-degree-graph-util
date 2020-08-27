@@ -57,8 +57,12 @@ export default class Graph extends GraphT {
             Graph.GetDriverName(key as DriversT),
             Number(this.pathLength[key as DriversT].count)
          ]);
-      const mostClosest = items.sort((a, b) => Number(a[2]) - Number(b[2]));
-      const mostFarthest = items.sort((a, b) => Number(b[2]) - Number(a[2]));
+      const mostClosest = Array.from(
+         items.sort((a, b) => Number(a[2]) - Number(b[2]))
+      );
+      const mostFarthest = Array.from(
+         items.sort((a, b) => Number(b[2]) - Number(a[2]))
+      );
 
       return {
          mostClosest: mostClosest,
