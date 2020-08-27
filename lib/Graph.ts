@@ -85,9 +85,7 @@ export default class Graph extends GraphT {
          }
          if (minDist === 1) break;
       }
-      return Graph.GeneratePayload(
-         this.Path(minPair[0], minPair[1]) as DriversT[]
-      );
+      return this.Path(minPair[0], minPair[1]) as DriversT[];
    }
 
    public GetFarthestDriverPairing(
@@ -109,9 +107,7 @@ export default class Graph extends GraphT {
          }
          if (maxDist === 1) break;
       }
-      return Graph.GeneratePayload(
-         this.Path(maxPair[0], maxPair[1]) as DriversT[]
-      );
+      return this.Path(maxPair[0], maxPair[1]) as DriversT[];
    }
 
    public GetClosestDriverPairingBetweenSeasons(
@@ -186,12 +182,10 @@ export default class Graph extends GraphT {
       source: DriverLinkNameT,
       dest: DriverLinkNameT
    ) {
-      return Graph.GeneratePayload(
-         this.Path(
-            Drivers[source] as DriversT,
-            Drivers[dest] as DriversT
-         ) as DriversT[]
-      );
+      return this.Path(
+         Drivers[source] as DriversT,
+         Drivers[dest] as DriversT
+      ) as DriversT[];
    }
 
    public PathDriverName(source: DriversT, dest: DriversT) {
@@ -208,7 +202,7 @@ export default class Graph extends GraphT {
       return names;
    }
 
-   public static GeneratePayload(items: DriversT[]) {
+   public static PathToTree(items: DriversT[]) {
       if (items.length === 0) return {};
       // eslint-disable-next-line no-bitwise
       const mid = (items.length / 2) >> 0;
