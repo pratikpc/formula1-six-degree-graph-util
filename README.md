@@ -2,11 +2,13 @@
 
 ## Website [https://pratikpc.github.io/six-degree-f1/](https://pratikpc.github.io/six-degree-f1/)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Graph Operations utilised by the website to parse JSON and Abstract processing
 
 ```ts
+import Graph from 'formula-one-six-degree-graph-util';
+
 console.log(Graph.GetDriverName('5'));
 const graph = new Graph();
 
@@ -37,5 +39,4 @@ console.log(
       graph.GetClosestTeamAndDriverPairing('mclaren', 'kimi-raikkonen')
    )
 );
-
 ```

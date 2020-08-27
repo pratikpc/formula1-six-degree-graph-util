@@ -1,6 +1,6 @@
 {
-   "name": "formula1-graph-names",
-   "version": "1.0.12",
+   "name": "formula-one-six-degree-graph-util",
+   "version": "1.0.0",
    "description": "A Library to Perform Graphing between Multiple Drivers of Formula One",
    "main": "./dist/index.js",
    "types": "./dist/index.d.ts",
